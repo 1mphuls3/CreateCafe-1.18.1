@@ -2,7 +2,6 @@ package com.Imphuls3.createcafe.core.registry;
 
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.math.Vector3f;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer;
@@ -11,6 +10,7 @@ import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3f;
 
 import java.awt.*;
 import java.util.function.Consumer;
@@ -220,10 +220,6 @@ public class FluidTypeRegistry {
     }public static class Coffee extends TintedFluidType {
         public Coffee(Properties properties, ResourceLocation stillTexture, ResourceLocation flowingTexture) {
             super(properties, stillTexture, flowingTexture, 0xc8482713);
-        }
-    }public static class IcedCoffee extends TintedFluidType {
-        public IcedCoffee(Properties properties, ResourceLocation stillTexture, ResourceLocation flowingTexture) {
-            super(properties, stillTexture, flowingTexture, 0xc85c3721);
         }
     }public static class StrawberryS extends TintedFluidType {
         public StrawberryS(Properties properties, ResourceLocation stillTexture, ResourceLocation flowingTexture) {

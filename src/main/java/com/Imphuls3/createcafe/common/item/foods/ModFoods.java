@@ -1,6 +1,7 @@
 package com.Imphuls3.createcafe.common.item.foods;
 
 import com.Imphuls3.createcafe.common.effect.EffectRegistry;
+import com.Imphuls3.createcafe.config.CafeConfig;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -25,41 +26,37 @@ public class ModFoods {
     public static final FoodProperties CRUSHED_OREO = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.1F).fast().build();
 
     public static final FoodProperties REGEN_DRINK = (new FoodProperties.Builder())
-            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 10 * 20, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, CafeConfig.effectDuration.get() * 20, 1), 1.0F)
             .nutrition(8).saturationMod(0.2F).alwaysEat().build();
 
     public static final FoodProperties FIRE_RES = (new FoodProperties.Builder())
-            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 10 * 20, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, CafeConfig.effectDuration.get() * 20, 1), 1.0F)
             .nutrition(8).saturationMod(0.2F).alwaysEat().build();
 
     public static final FoodProperties RES_DRINK = (new FoodProperties.Builder())
-            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 10 * 20, 0), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, CafeConfig.effectDuration.get() * 20, 0), 1.0F)
             .nutrition(8).saturationMod(0.2F).alwaysEat().build();
 
     public static final FoodProperties SPEED_DRINK = (new FoodProperties.Builder())
-            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10 * 20, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, CafeConfig.effectDuration.get() * 20, 1), 1.0F)
             .nutrition(8).saturationMod(0.2F).alwaysEat().build();
 
     public static final FoodProperties STRENGTH_DRINK = (new FoodProperties.Builder())
-            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 10 * 20, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, CafeConfig.effectDuration.get() * 20, 1), 1.0F)
             .nutrition(8).saturationMod(0.2F).alwaysEat().build();
 
     public static final FoodProperties SUPER_DRINK = (new FoodProperties.Builder())
-            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 10 * 20, 1), 1.0F)
-            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10 * 20, 1), 1.0F)
-            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 10 * 20, 1), 1.0F)
-            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 10 * 20, 1), 1.0F)
-            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 10 * 20, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, CafeConfig.effectDuration.get() * 20, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, CafeConfig.effectDuration.get() * 20, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, CafeConfig.effectDuration.get() * 20, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, CafeConfig.effectDuration.get() * 20, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, CafeConfig.effectDuration.get() * 20, 1), 1.0F)
             .nutrition(8).saturationMod(0.2F).alwaysEat().build();
 
-    public static final Function<MobEffect, FoodProperties> ICED_COFFEE_DRINK = (effect -> (new FoodProperties.Builder())
-            .effect(() -> new MobEffectInstance(EffectRegistry.CAFFINATED.get(), 10 * 20, 3), 1.0F)
-            .effect(() -> effect != null ? new MobEffectInstance(effect, 10 * 20, 1) :
-                    new MobEffectInstance(MobEffects.WATER_BREATHING, 0, 0, true, false), 1.0F)
-            .nutrition(8).saturationMod(0.2F).alwaysEat().build());
+    public static final FoodProperties ICED_COFFEE_DRINK = new FoodProperties.Builder()
+            .effect(() -> new MobEffectInstance(EffectRegistry.CAFFINATED.get(), CafeConfig.effectDuration.get() * 20, 3), 1.0F).alwaysEat().build();
     public static final Function<MobEffect, FoodProperties> ICED_COFFEE_DRINK_FLAVOR = (effect -> (new FoodProperties.Builder())
-            .effect(() -> new MobEffectInstance(EffectRegistry.CAFFINATED.get(), 10 * 20, 1), 1.0F)
-            .effect(() -> effect != null ? new MobEffectInstance(effect, 10 * 20, 1) :
-                    new MobEffectInstance(MobEffects.WATER_BREATHING, 0, 0, true, false), 1.0F)
+            .effect(() -> new MobEffectInstance(EffectRegistry.CAFFINATED.get(), CafeConfig.effectDuration.get() * 20, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(effect, CafeConfig.effectDuration.get() * 20, 1), 1.0F)
             .nutrition(8).saturationMod(0.2F).alwaysEat().build());
 }

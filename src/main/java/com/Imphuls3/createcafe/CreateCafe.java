@@ -1,13 +1,9 @@
 package com.Imphuls3.createcafe;
 
 import com.Imphuls3.createcafe.common.effect.EffectRegistry;
-import com.Imphuls3.createcafe.common.item.CreateCafeFluidTab;
-import com.Imphuls3.createcafe.common.item.CreateCafeTab;
 import com.Imphuls3.createcafe.core.registry.*;
-import com.Imphuls3.createcafe.compat.Compat;
 import com.Imphuls3.createcafe.config.ConfigRegistry;
 import com.tterrag.registrate.Registrate;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,10 +18,8 @@ public class CreateCafe {
     public static final String ID = "createcafe";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public static final NonNullSupplier<Registrate> REGISTRATE = NonNullSupplier.lazy(() -> Registrate.create(ID)
-            .creativeModeTab(() -> CreateCafeTab.CREATE_CAFE));
-    public static final NonNullSupplier<Registrate> FLUIDREGISTRATE = NonNullSupplier.lazy(() -> Registrate.create(ID)
-            .creativeModeTab(() -> CreateCafeFluidTab.CREATE_CAFE));
+    public static final Registrate REGISTRATE = Registrate.create(ID).defaultCreativeTab(CreativeTabRegistry.CREATE_CAFE.getKey());
+    public static final Registrate FLUIDREGISTRATE = Registrate.create(ID).defaultCreativeTab(CreativeTabRegistry.CREATE_CAFE_FLUIDS.getKey());
 
     public CreateCafe() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -33,6 +27,7 @@ public class CreateCafe {
         eventBus.addListener(this::setup);
         eventBus.addListener(this::commonSetup);
 
+        CreativeTabRegistry.register(eventBus);
         ItemRegistry.register(eventBus);
         FluidTypeRegistry.register(eventBus);
         FluidRegistry.register(eventBus);
@@ -41,7 +36,6 @@ public class CreateCafe {
         ModLootModifiersRegistry.register(eventBus);
 
         ConfigRegistry.register();
-        Compat.init();
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -51,10 +45,10 @@ public class CreateCafe {
     }
 
     public static Registrate registrate() {
-        return REGISTRATE.get();
+        return REGISTRATE;
     }
     public static Registrate fluidRegistrate() {
-        return FLUIDREGISTRATE.get();
+        return FLUIDREGISTRATE;
     }
 
     private void setup(final FMLCommonSetupEvent event) {

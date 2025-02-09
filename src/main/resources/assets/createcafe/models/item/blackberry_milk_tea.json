@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "createcafe:tea/blackberry_milk_tea"
+    "layer0": "createcafe:item/blackberry_milk_tea"
   }
 }

@@ -2,8 +2,12 @@
   "type": "create:mixing",
   "conditions": [
     {
-      "modid": "bloodmagic",
-      "type": "forge:mod_loaded"
+      "value":
+      {
+        "tag": "forge:fruits/blood_orange",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
     }
   ],
   "ingredients": [

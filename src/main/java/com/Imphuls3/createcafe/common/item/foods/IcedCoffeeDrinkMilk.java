@@ -1,5 +1,6 @@
 package com.Imphuls3.createcafe.common.item.foods;
 
+import com.Imphuls3.createcafe.config.CafeConfig;
 import com.Imphuls3.createcafe.core.registry.ItemRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -27,30 +28,33 @@ public class IcedCoffeeDrinkMilk extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag advanced) {
         super.appendHoverText(stack, level, tooltip, advanced);
-        tooltip.add(Component.translatable("tooltip.createcafe.caffeinated.one").withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("tooltip.createcafe.caffeinated").withStyle(ChatFormatting.BLUE));
         if(type != "none") tooltip.add(Component.translatable("tooltip.createcafe." + type).withStyle(ChatFormatting.BLUE));
     }
 
+    @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-        if (!level.isClientSide) livingEntity.curePotionEffects(new ItemStack(Items.MILK_BUCKET, 1)); //So it removes the same effects that milk does?
         super.finishUsingItem(stack, level, livingEntity);
-        if (livingEntity instanceof ServerPlayer serverplayer) {
-            CriteriaTriggers.CONSUME_ITEM.trigger(serverplayer, stack);
-            serverplayer.awardStat(Stats.ITEM_USED.get(this));
-        }
+        if (!level.isClientSide) livingEntity.curePotionEffects(stack);
+        if(CafeConfig.giveEmptyCups.get()) {
+            if (livingEntity instanceof ServerPlayer serverplayer) {
+                CriteriaTriggers.CONSUME_ITEM.trigger(serverplayer, stack);
+                serverplayer.awardStat(Stats.ITEM_USED.get(this));
+            }
 
-        if (stack.isEmpty()) {
-            return new ItemStack(ItemRegistry.ICED_COFFEE_CUP.get());
-        } else {
-            if (livingEntity instanceof Player && !((Player)livingEntity).getAbilities().instabuild) {
-                ItemStack itemstack = new ItemStack(ItemRegistry.ICED_COFFEE_CUP.get());
-                Player player = (Player)livingEntity;
-                if (!player.getInventory().add(itemstack)) {
-                    player.drop(itemstack, false);
+            if (stack.isEmpty()) {
+                return new ItemStack(ItemRegistry.ICED_COFFEE_CUP.get());
+            } else {
+                if (livingEntity instanceof Player && !((Player)livingEntity).getAbilities().instabuild) {
+                    ItemStack itemstack = new ItemStack(ItemRegistry.ICED_COFFEE_CUP.get());
+                    Player player = (Player)livingEntity;
+                    if (!player.getInventory().add(itemstack)) {
+                        player.drop(itemstack, false);
+                    }
                 }
             }
-            return stack;
         }
+        return stack;
     }
 
     @Override

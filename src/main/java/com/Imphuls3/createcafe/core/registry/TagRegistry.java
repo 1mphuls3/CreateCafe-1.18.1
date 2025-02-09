@@ -10,6 +10,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class TagRegistry {
     public static class Fluids {
@@ -35,7 +36,7 @@ public class TagRegistry {
 
     public static class Items {
         private static TagKey<Item> createCafeTag(String name) {
-            return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(CreateCafe.ID, name));
+            return TagKey.create(ForgeRegistries.ITEMS.getRegistryKey(), new ResourceLocation(CreateCafe.ID, name));
         }
 
         private static TagKey<Item> forgeTag(String name) {

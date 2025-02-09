@@ -21,6 +21,8 @@ public class ConfigRegistry {
     }
 
     private static void registerServerConfigs() {
-
+        ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
+        CafeConfig.registerServerConfig(SERVER_BUILDER);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SERVER_BUILDER.build());
     }
 }

@@ -8,7 +8,7 @@
   ],
   "ingredients": [
     {
-      "tag": "culturaldelights:cut_avocado"
+      "item": "culturaldelights:cut_avocado"
     },
     {
       "fluidTag": "forge:milk",

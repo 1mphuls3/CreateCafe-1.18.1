@@ -4,7 +4,7 @@
     {
       "value":
       {
-        "tag": "forge:fruits/lychees",
+        "tag": "forge:fruits/lychee",
         "type": "forge:tag_empty"
       },
       "type": "forge:not"

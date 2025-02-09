@@ -10,8 +10,8 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 public class FluidRegistry {
     public static final Registrate REGISTRATE = CreateCafe.fluidRegistrate();
-    public static final ResourceLocation STILL_TEXTURE = new ResourceLocation("createcafe:fluid/milk_tea_still");
-    public static final ResourceLocation FLOWING_TEXTURE = new ResourceLocation("createcafe:fluid/milk_tea_flow");
+    public static final ResourceLocation STILL_TEXTURE = new ResourceLocation("createcafe:block/milk_tea_still");
+    public static final ResourceLocation FLOWING_TEXTURE = new ResourceLocation("createcafe:block/milk_tea_flow");
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> MELTED_SUGAR = REGISTRATE.fluid("melted_sugar",
                     STILL_TEXTURE, FLOWING_TEXTURE, MeltedSugar::new)

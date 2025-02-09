@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "createcafe:coffee/caramel_iced_coffee"
+    "layer0": "createcafe:item/caramel_iced_coffee"
   }
 }

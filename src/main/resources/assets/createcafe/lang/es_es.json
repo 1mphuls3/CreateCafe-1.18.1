@@ -11,8 +11,8 @@
   "tooltip.createcafe.caffeinated.one": "Caffeinated II (0:10)",
   "tooltip.createcafe.caffeinated": "Caffeinated IV (0:10)",
 
-  "itemGroup.createCafeTab": "Create Cafe",
-  "itemGroup.createCafeFluidTab": "Fluidos de Create Cafe",
+  "itemGroup.create_cafe_items": "Create Cafe",
+  "itemGroup.create_cafe_fluids": "Fluidos de Create Cafe",
 
   "item.createcafe.mana_berries": "Bayas de maná",
   "item.createcafe.oreo": "Oreo",
